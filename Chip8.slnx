@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/UI/">
+    <Project Path="Abstraction/Abstraction.csproj" />
+    <Project Path="ConsoleGame/ConsoleGame.csproj" />
+    <Project Path="WinFromGame/WinFormGame.csproj" />
+  </Folder>
+  <Project Path="Core/Core.csproj" />
+  <Project Path="Platform/Platform.csproj" />
+</Solution>
