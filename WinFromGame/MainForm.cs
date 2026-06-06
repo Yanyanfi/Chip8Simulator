@@ -50,14 +50,13 @@ public partial class MainForm : Form
         if (_virtualMachine.IsSoundActive)
             _buzzer.Beep((int)deltaTime);
         var pixels = new bool[64*32];
-        var index = 0;
-        foreach(var line in _virtualMachine.Display)
-        {
-            line.CopyTo(pixels, index);
-            index += 64;
-        }
+        Parallel.For(0, 32, r => CopyLine(r));
         chip8DisplayControl1.SetFrame(pixels);
-        
+        void CopyLine(int row)
+        {
+            var line = _virtualMachine.Display.Skip(row).First();
+            line.CopyTo(pixels, row * 64);
+        }
     }
     protected override async void OnShown(EventArgs e)
     {
