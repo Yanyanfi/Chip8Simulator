@@ -1,5 +1,5 @@
 ﻿using Core.Input;
-using Core.Interfaces;
+using Core.Logger;
 using Core.Memory;
 using System.Data;
 using System.Security.Cryptography;

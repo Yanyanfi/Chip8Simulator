@@ -1,7 +1,7 @@
 using Abstraction;
 using Core.Decoder;
 using Core.GameLoader;
-using Core.Interfaces;
+using Core.Logger;
 using Core.Memory;
 using Core.MemoryInitializer;
 using Core.VirtualMachine;
