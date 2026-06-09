@@ -36,9 +36,9 @@ partial class MainForm
         chip8DisplayControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         chip8DisplayControl1.BackgroundColor = Color.Black;
         chip8DisplayControl1.ForegroundColor = Color.White;
-        chip8DisplayControl1.Location = new Point(60, 47);
+        chip8DisplayControl1.Location = new Point(12, 12);
         chip8DisplayControl1.Name = "chip8DisplayControl1";
-        chip8DisplayControl1.Size = new Size(644, 322);
+        chip8DisplayControl1.Size = new Size(516, 258);
         chip8DisplayControl1.TabIndex = 0;
         chip8DisplayControl1.Text = "chip8DisplayControl1";
         // 
@@ -46,7 +46,7 @@ partial class MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 17F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(540, 283);
         Controls.Add(chip8DisplayControl1);
         Name = "MainForm";
         Text = "Chip-8";

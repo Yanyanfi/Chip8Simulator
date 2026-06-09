@@ -23,7 +23,10 @@ collection.AddSingleton<IInput, KeyboardInput>();
 collection.AddSingleton<IBuzzer, Buzzer>();
 collection.AddSingleton<IGameDrawer, GameDrawer>();
 collection.AddSingleton<Game>();
-collection.AddSingleton<ILogger, Logger>(sp=>new(@"C:\Users\wanya\Desktop\vm.log"));
+string localPath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Chip8Simulator");
+if (!Path.Exists(localPath))
+    Directory.CreateDirectory(localPath);
+collection.AddSingleton<ILogger, Logger>(sp=>new(Path.Join(localPath,"vm.log")));
 
 var sp = collection.BuildServiceProvider();
 var game = sp.GetService<Game>()??throw new ServiceNotFoundException<Game>();
