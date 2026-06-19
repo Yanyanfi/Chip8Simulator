@@ -6,20 +6,18 @@ using Core.Memory;
 using Core.MemoryInitializer;
 using Core.VirtualMachine;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.ApplicationServices;
-using Microsoft.VisualBasic.Logging;
 using Platform;
-using System.Diagnostics;
 using WinFromGame;
 
 namespace WinFormGame;
+
 static class Program
 {
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
     [STAThread]
-    static async Task Main(params string[] args)
+    static void Main(params string[] args)
     {
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
@@ -34,19 +32,19 @@ static class Program
         collection.AddSingleton<IInput, KeyboardInput>();
         collection.AddSingleton<IBuzzer, Buzzer>();
         collection.AddSingleton<Game>();
-        string localPath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Chip8Simulator");
+        string localPath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Chip8Simulator");
         if (!Path.Exists(localPath))
             Directory.CreateDirectory(localPath);
-        collection.AddSingleton<ILogger, Logger>(sp => new(Path.Join(localPath,"vm.log")));
+        collection.AddSingleton<ILogger, Logger>(sp => new(Path.Join(localPath, "vm.log")));
 
         var path = args[0];
-        collection.AddSingleton<MainForm>(sp=>new MainForm(sp.GetService<VirtualMachine>()!,sp.GetService<IInput>()!,sp.GetService<IBuzzer>()!,path));
+        collection.AddSingleton<MainForm>(sp => new MainForm(sp.GetService<VirtualMachine>()!, sp.GetService<IInput>()!, sp.GetService<IBuzzer>()!, path));
 
         var sp = collection.BuildServiceProvider();
         var form = sp.GetService<MainForm>() ?? throw new Exception();
-        
+
         form.Initialize();
 
         Application.Run(form);
-    }    
+    }
 }
